@@ -41,7 +41,7 @@ const AddEntrie = (props) => {
         <Toolbar>
           <Typography variant="body1">Add customer</Typography>
         </Toolbar>
-        <Grid container spacing={2} alignItems="center" className={classes.content}>
+        <Grid container spacing={2} alignItems="center" className={classes.content}  alignContent='flex-end'>
           <Grid item xs={3}>
             <TextField
               id='name'
@@ -77,7 +77,7 @@ const AddEntrie = (props) => {
               defaultValue={customer.state}
             />
           </Grid>
-          <Grid item xs alignContent='flex-end'>
+          <Grid item xs>
             <Button variant="contained" onClick={addCustomer} color="primary" className={classes.addUser}>
               Add user
             </Button>

@@ -26,12 +26,14 @@ import { Link } from 'react-router-dom'
 const styles = theme => ({
   categoryHeader: {
     paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(1.2),
   },
   categoryHeaderPrimary: {
     color: theme.palette.common.white,
+    paddingBottom: 1,
   },
   item: {
+    lineHeight: 2,
     paddingTop: 1,
     paddingBottom: 1,
     color: 'rgba(255, 255, 255, 0.7)',
@@ -42,22 +44,23 @@ const styles = theme => ({
   itemCategory: {
     backgroundColor: '#232f3e',
     boxShadow: '0 -1px 0 #404854 inset',
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
   },
   firebase: {
     fontSize: 24,
     color: theme.palette.common.white,
   },
   itemActiveItem: {
-    color: '#4fc3f7',
+    color: '#4fc1f7',
   },
   itemPrimary: {
-    fontSize: 'inherit',
+    fontSize: 16,
+    fontWeight: 'normal',
   },
   itemIcon: {
     minWidth: 'auto',
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2.5),
   },
   divider: {
     marginTop: theme.spacing(2),
@@ -75,7 +78,7 @@ function Navigator(props) {
       children: [
         { id: 'Customers', icon: <SupervisorAccountIcon />, active: true, link: '/customers'},
         { id: 'Authentication', icon: <PeopleIcon />, link:'/'},
-        { id: 'Database', icon: <DnsRoundedIcon />, link:'/customers/'},
+        { id: 'Database', icon: <DnsRoundedIcon />, link:'/dashboard'},
         { id: 'Storage', icon: <PermMediaOutlinedIcon />, link:'/' },
         { id: 'Hosting', icon: <PublicIcon />, link:'/catalog' },
         { id: 'Functions', icon: <SettingsEthernetIcon />, link:'/desk' },

@@ -9,7 +9,6 @@ const columns = [
    name: "name",
    label: "Name",
    options: {
-    filter: true,
     sort: true,
    }
   },
@@ -75,7 +74,7 @@ const Customers = (props) => {
   
   return (
     <React.Fragment>
-      <Grid container spacing={6}>
+      <Grid container spacing={0}>
         <Grid item xs={12}>
           <MUIDataTable
             title={"Employee List"}

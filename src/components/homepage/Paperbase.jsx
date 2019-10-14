@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
 import Navigator from './Navigator';
 import Content from './Content';
+import HeaderBar from './HeaderBar';
 import Header from './Header';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Customers from '../customers/Customers'
@@ -13,7 +14,9 @@ import Copyright from '../layout/Copyright'
 import Countries from '../countries/Countries';
 import Desk from '../desk/Desk';
 import Catalog from '../catalog/Catalog';
+import Dashboard from '../dashboard/Dashboard'
 
+//Maven+Pro|Quattrocento+Sans|Questrial|Raleway
 
 let theme = createMuiTheme({
   palette: {
@@ -22,6 +25,11 @@ let theme = createMuiTheme({
       main: '#009be5',
       dark: '#006db3',
     },
+    das: {
+      light: '#1b99d5',
+      main: '#1896d2',
+      dark: '#1593ef'
+    }
   },
   typography: {
     h5: {
@@ -29,6 +37,21 @@ let theme = createMuiTheme({
       fontSize: 26,
       letterSpacing: 0.5,
     },
+    fontFamily: [
+      'Questrial',
+      'Maven Pro',
+      'Ubuntu',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
   shape: {
     borderRadius: 8,
@@ -145,7 +168,6 @@ const styles = {
   },
   main: {
     flex: 1,
-    padding: theme.spacing(6, 4),
     background: '#eaeff1',
   },
   footer: {
@@ -171,6 +193,17 @@ function Paperbase(props) {
     console.log(page);
   }
 
+  const renderComponentWithHeader = (component) => {
+    const o = `<${component} />`;
+    return (
+      <React.Fragment>
+        <Header onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
+        {component}
+      </React.Fragment>
+    )
+    
+  }
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
@@ -194,16 +227,17 @@ function Paperbase(props) {
             </Hidden>
           </nav>
           <div className={classes.app}>
-            <Header onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
-            {/* <main className={classes.main}> */}
+            <HeaderBar onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
+            <main className={classes.main}>
             <Switch>
-                <Route exact path='/' component={Content} />
-                <Route path='/customers/' page={page} component={Customers} />
-                <Route path='/countries' page={page} component={Countries} />
-                <Route path='/desk' page={page} component={Desk} />
+              <Route exact path='/' component={() => renderComponentWithHeader(<Content/>)} />
+              <Route path='/dashboard' page={page} component={Dashboard} />
+              <Route path='/customers/' page={page} component={Customers} />
+              <Route path='/countries' page={page} component={Countries} />
+              <Route path='/desk' page={page} component={Desk} />
               <Route path='/catalog' page={page} component={Catalog} />
             </Switch>
-            {/* </main> */}
+            </main>
             <footer className={classes.footer}>
               {/* <Copyright /> */}
             </footer>
