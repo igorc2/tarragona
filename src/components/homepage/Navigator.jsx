@@ -14,6 +14,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
 import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
 import PublicIcon from '@material-ui/icons/Public';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 import TimerIcon from '@material-ui/icons/Timer';
@@ -76,21 +77,22 @@ function Navigator(props) {
     {
       id: 'Develop',
       children: [
-        { id: 'Customers', icon: <SupervisorAccountIcon />, active: true, link: '/customers'},
-        { id: 'Authentication', icon: <PeopleIcon />, link:'/'},
-        { id: 'Database', icon: <DnsRoundedIcon />, link:'/dashboard'},
-        { id: 'Storage', icon: <PermMediaOutlinedIcon />, link:'/' },
-        { id: 'Hosting', icon: <PublicIcon />, link:'/catalog' },
-        { id: 'Functions', icon: <SettingsEthernetIcon />, link:'/desk' },
+        { id: 'Users', icon: <SupervisorAccountIcon />, active: true, link: '/customers'},
+        { id: 'Projects', icon: <PeopleIcon />, link:'/'},
+        { id: 'Kanban', icon: <DnsRoundedIcon />, link:'/catalog'},
+        { id: 'Chat', icon: <PermMediaOutlinedIcon />, link:'/' },
+        { id: 'Dashboard', icon: <PublicIcon />, link:'/dashboard' },
+        { id: 'Calendar', icon: <CalendarTodayIcon />, link:'/' },
+        { id: 'Documents', icon: <SettingsEthernetIcon />, link:'/desk' },
         { id: 'ML Kit', icon: <SettingsInputComponentIcon />, link:'/countries' },
       ],
     },
     {
       id: 'Quality',
       children: [
-        { id: 'Analytics', icon: <SettingsIcon />, link:'/' },
+        { id: 'Config', icon: <SettingsIcon />, link:'/' },
+        
         { id: 'Performance', icon: <TimerIcon />, link:'/' },
-        { id: 'Test Lab', icon: <PhonelinkSetupIcon />, link:'/' },
       ],
     },
   ]);

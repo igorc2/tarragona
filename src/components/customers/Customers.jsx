@@ -42,13 +42,6 @@ const columns = [
  const options = {
    filterType: 'checkbox',
  };
- const data = [
-  { name: "Joe James", company: "Test Corp", city: "Yonkers", state: "NY" },
-  { name: "John Walsh", company: "Test Corp", city: "Hartford", state: "CT" },
-  { name: "Bob Herm", company: "Test Corp", city: "Tampa", state: "FL" },
-  { name: "James Houston", company: "Test Corp", city: "Dallas", state: "TX" },
- ];
-
 
 const Customers = (props) => {
   const [customers, setCustomers] = useState([
@@ -79,7 +72,7 @@ const Customers = (props) => {
           <MUIDataTable
             title={"Employee List"}
             data={customers}
-            responsive={'scrollMaxHeight'}
+            responsive='scrollFullHeight'
             columns={columns}
             options={options}
           />    

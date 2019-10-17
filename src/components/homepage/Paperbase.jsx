@@ -22,7 +22,7 @@ let theme = createMuiTheme({
   palette: {
     primary: {
       light: '#63ccff',
-      main: '#009be5',
+      main: '#2693b9',
       dark: '#006db3',
     },
     das: {
@@ -149,7 +149,7 @@ theme = {
 };
 
 const drawerWidth = 256;
-
+//2693b9
 const styles = {
   root: {
     display: 'flex',
@@ -169,6 +169,9 @@ const styles = {
   main: {
     flex: 1,
     background: '#eaeff1',
+  },
+  spaced: {
+    padding: '30px 40px',
   },
   footer: {
     padding: theme.spacing(2),
@@ -194,14 +197,22 @@ function Paperbase(props) {
   }
 
   const renderComponentWithHeader = (component) => {
-    const o = `<${component} />`;
     return (
       <React.Fragment>
         <Header onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
-        {component}
+        <div className={classes.spaced}>
+          {component}
+        </div>
       </React.Fragment>
     )
-    
+  }
+
+  const renderSpaced = (component) => {
+    return (
+      <div className={classes.spaced}>
+        {component}
+      </div>
+    )
   }
 
   return (
@@ -228,13 +239,13 @@ function Paperbase(props) {
           </nav>
           <div className={classes.app}>
             <HeaderBar onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
-            <main className={classes.main}>
+            <main className={classes.main} >
             <Switch>
-              <Route exact path='/' component={() => renderComponentWithHeader(<Content/>)} />
-              <Route path='/dashboard' page={page} component={Dashboard} />
+              <Route exact path='/' className='spaced' component={() => renderComponentWithHeader(<Content/>)} />
+              <Route path='/dashboard' page={page} component={() => renderSpaced(<Dashboard />)} />
               <Route path='/customers/' page={page} component={Customers} />
               <Route path='/countries' page={page} component={Countries} />
-              <Route path='/desk' page={page} component={Desk} />
+              <Route path='/desk' page={page} component={() => renderSpaced(<Desk />)} />
               <Route path='/catalog' page={page} component={Catalog} />
             </Switch>
             </main>

@@ -45,11 +45,6 @@ function HeaderBar(props) {
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
-            <Grid item xs>
-              <Typography color="inherit" variant="h6" component="h1">
-                {pageInfo.title}
-              </Typography>
-            </Grid>
             <Hidden smUp>
               <Grid item>
                 <IconButton
@@ -62,6 +57,12 @@ function HeaderBar(props) {
                 </IconButton>
               </Grid>
             </Hidden>
+            <Grid item xs>
+              <Typography color="inherit" variant="h6" component="h1">
+                {pageInfo.title}
+              </Typography>
+            </Grid>
+            
             <Grid item xs />
             <Grid item>
               <Link className={classes.link} href="#" variant="body2">
