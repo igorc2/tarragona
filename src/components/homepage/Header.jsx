@@ -41,7 +41,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <AppBar
+      {/* <AppBar
         component="div"
         className={classes.secondaryBar}
         color="primary"
@@ -67,7 +67,7 @@ function Header(props) {
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <AppBar
         component="div"
         className={classes.secondaryBar}

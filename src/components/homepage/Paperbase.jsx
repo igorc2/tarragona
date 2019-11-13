@@ -155,12 +155,12 @@ const styles = {
     display: 'flex',
     minHeight: '100vh',
   },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
+  // drawer: {
+  //   [theme.breakpoints.up('sm')]: {
+  //     width: drawerWidth,
+  //     flexShrink: 0,
+  //   },
+  // },
   app: {
     flex: 1,
     display: 'flex',
@@ -221,21 +221,20 @@ function Paperbase(props) {
         <div className={classes.root}>
           <CssBaseline />
           <nav className={classes.drawer}>
-            <Hidden smUp implementation="js">
+            {/* <Hidden smUp implementation="js"> */}
               <Navigator
-                PaperProps={{ style: { width: drawerWidth } }}
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
                 handlePageChange={handlePageChange}
               />
-            </Hidden>
-            <Hidden xsDown implementation="css">
+            {/* </Hidden> */}
+            {/* <Hidden xsDown implementation="css">
               <Navigator
-                PaperProps={{ style: { width: drawerWidth } }} 
+                PaperProps={{ style: { width: drawerWidth } }}
                 handlePageChange={handlePageChange}
               />
-            </Hidden>
+            </Hidden> */}
           </nav>
           <div className={classes.app}>
             <HeaderBar onDrawerToggle={handleDrawerToggle} pageInfo={page}/>

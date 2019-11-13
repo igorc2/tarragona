@@ -19,10 +19,11 @@ import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
-import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
 
-
+const drawerWidth = 240;
 
 const styles = theme => ({
   categoryHeader: {
@@ -66,12 +67,45 @@ const styles = theme => ({
   divider: {
     marginTop: theme.spacing(2),
   },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+  },
+  drawerOpen: {
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: 55,
+    },
+  },
 });
 
 
 
 function Navigator(props) {
   const { classes, handlePageChange, ...other } = props;
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(!open);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const [ categories, setCategories ] = useState([
     {
@@ -91,7 +125,6 @@ function Navigator(props) {
       id: 'Quality',
       children: [
         { id: 'Config', icon: <SettingsIcon />, link:'/' },
-        
         { id: 'Performance', icon: <TimerIcon />, link:'/' },
       ],
     },
@@ -112,7 +145,32 @@ function Navigator(props) {
   }
 
   return (
-    <Drawer variant="permanent" {...other}>
+    <Drawer
+      variant="permanent"
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: open,
+        [classes.drawerClose]: !open,
+      })}
+      classes={{
+        paper: clsx({
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        }),
+      }}
+      open={open}
+    >
+    {/* <Drawer variant="permanent" {...props} > */}
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        onClick={handleDrawerOpen}
+        edge="start"
+        className={clsx(classes.menuButton, {
+          [classes.hide]: open,
+        })}
+      >
+        <MenuIcon />
+      </IconButton>
       <List disablePadding>
         <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
           Paperbase
@@ -131,7 +189,7 @@ function Navigator(props) {
         </ListItem>
         {categories && categories.map(({ id, children }) => (
           <React.Fragment key={id}>
-            <ListItem className={classes.categoryHeader}>
+            {/* <ListItem className={classes.categoryHeader}>
               <ListItemText
                 classes={{
                   primary: classes.categoryHeaderPrimary,
@@ -139,7 +197,7 @@ function Navigator(props) {
               >
                 {id} 
               </ListItemText>
-            </ListItem>
+            </ListItem> */}
             {children.map(({ id: childId, icon, active, link }) => (
               <Link to={link} key={childId}>
                 <ListItem
