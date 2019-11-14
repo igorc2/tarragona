@@ -9,19 +9,19 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import PeopleIcon from '@material-ui/icons/People';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
-import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
-import PublicIcon from '@material-ui/icons/Public';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { FaGalacticSenate } from 'react-icons/fa';
+import { FiBox } from 'react-icons/fi';
+import { MdChat } from "react-icons/md";
+import { AiOutlineAreaChart } from "react-icons/ai";
 
 const drawerWidth = 240;
 
@@ -90,6 +90,10 @@ const styles = theme => ({
       width: 55,
     },
   },
+  menuButton: {
+    color: 'white',
+    margin: 0,
+  },
 });
 
 
@@ -112,10 +116,10 @@ function Navigator(props) {
       id: 'Develop',
       children: [
         { id: 'Users', icon: <SupervisorAccountIcon />, active: true, link: '/customers'},
-        { id: 'Projects', icon: <PeopleIcon />, link:'/'},
+        { id: 'Projects', icon: <FiBox />, link:'/'},
         { id: 'Kanban', icon: <DnsRoundedIcon />, link:'/catalog'},
-        { id: 'Chat', icon: <PermMediaOutlinedIcon />, link:'/' },
-        { id: 'Dashboard', icon: <PublicIcon />, link:'/dashboard' },
+        { id: 'Chat', icon: <MdChat />, link:'/' },
+        { id: 'Dashboard', icon: <AiOutlineAreaChart />, link:'/dashboard' },
         { id: 'Calendar', icon: <CalendarTodayIcon />, link:'/' },
         { id: 'Documents', icon: <SettingsEthernetIcon />, link:'/desk' },
         { id: 'ML Kit', icon: <SettingsInputComponentIcon />, link:'/countries' },
@@ -169,12 +173,12 @@ function Navigator(props) {
           [classes.hide]: open,
         })}
       >
-        <MenuIcon />
+        <FaGalacticSenate size='1.8em' />
       </IconButton>
       <List disablePadding>
-        <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
+        {/* <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
           Paperbase
-        </ListItem>
+        </ListItem> */}
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
             <HomeIcon />

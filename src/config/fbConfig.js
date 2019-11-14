@@ -2,17 +2,17 @@
  import 'firebase/firestore';
  import 'firebase/auth'
  
- var config = {
-  apiKey: "AIzaSyD4mGSYqY03bdMz1H7ndiDrJ09uNkNUoJY",
-  authDomain: "lisboa-fb.firebaseapp.com",
-  databaseURL: "https://lisboa-fb.firebaseio.com",
-  projectId: "lisboa-fb",
-  storageBucket: "",
-  messagingSenderId: "782945401787",
-  appId: "1:782945401787:web:c11112a09c7396d4"
+ var firebaseConfig = {
+  apiKey: "AIzaSyDCXZtSc8mHUh2yoCFTRXqpVN_WqCEumJg",
+  authDomain: "taragona-fb.firebaseapp.com",
+  databaseURL: "https://taragona-fb.firebaseio.com",
+  projectId: "taragona-fb",
+  storageBucket: "taragona-fb.appspot.com",
+  messagingSenderId: "830379951526",
+  appId: "1:830379951526:web:814f80c9e72f72d988bb67"
 };
-
-firebase.initializeApp(config);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 // firebase.firestore().settings({ timestampsInSnapshots: true});
 
 export default firebase;

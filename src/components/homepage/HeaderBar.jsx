@@ -13,6 +13,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
+// import avatar from '/public/avatar.jpg'
+
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 const styles = theme => ({
@@ -78,7 +80,7 @@ function HeaderBar(props) {
             </Grid>
             <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
+                <Avatar src={process.env.PUBLIC_URL + '/ava3.jpg'} alt="My Avatar" />
               </IconButton>
             </Grid>
           </Grid>
