@@ -12,6 +12,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Customers from '../customers/Customers'
 import Copyright from '../layout/Copyright'
 import Countries from '../countries/Countries';
+import CreateCard from '../catalog/CreateCard'
 import Desk from '../desk/Desk';
 import Catalog from '../catalog/Catalog';
 import Dashboard from '../dashboard/Dashboard'
@@ -246,6 +247,7 @@ function Paperbase(props) {
               <Route path='/countries' page={page} component={Countries} />
               <Route path='/desk' page={page} component={() => renderSpaced(<Desk />)} />
               <Route path='/catalog' page={page} component={Catalog} />
+              <Route path='/create-card' page={page} component={CreateCard} />
             </Switch>
             </main>
             <footer className={classes.footer}>

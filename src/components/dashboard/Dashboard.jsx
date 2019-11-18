@@ -39,7 +39,7 @@ const Dashboard = () => {
     return (
       <div>
         <GridContainer>
-        <GridItem xs={12} sm={12} md={4}>
+        <GridItem xs={12} sm={12} md={6}>
           <Card chart>
             <CardHeader color="success">
               <ChartistGraph
@@ -66,7 +66,7 @@ const Dashboard = () => {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
+        <GridItem xs={12} sm={12} md={6}>
           <Card chart>
             <CardHeader color="warning">
               <ChartistGraph
@@ -89,7 +89,7 @@ const Dashboard = () => {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
+        <GridItem xs={12} sm={12} md={12}>
           <Card chart>
             <CardHeader color="danger">
               <ChartistGraph

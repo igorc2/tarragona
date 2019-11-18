@@ -118,9 +118,9 @@ function Navigator(props) {
         { id: 'Users', icon: <SupervisorAccountIcon />, active: true, link: '/customers'},
         { id: 'Projects', icon: <FiBox />, link:'/'},
         { id: 'Kanban', icon: <DnsRoundedIcon />, link:'/catalog'},
+        { id: 'Calendar', icon: <CalendarTodayIcon />, link:'/create-card' },
         { id: 'Chat', icon: <MdChat />, link:'/' },
         { id: 'Dashboard', icon: <AiOutlineAreaChart />, link:'/dashboard' },
-        { id: 'Calendar', icon: <CalendarTodayIcon />, link:'/' },
         { id: 'Documents', icon: <SettingsEthernetIcon />, link:'/desk' },
         { id: 'ML Kit', icon: <SettingsInputComponentIcon />, link:'/countries' },
       ],
@@ -128,7 +128,7 @@ function Navigator(props) {
     {
       id: 'Quality',
       children: [
-        { id: 'Config', icon: <SettingsIcon />, link:'/' },
+        { id: 'Config', icon: <SettingsIcon />, link:'/create-card' },
         { id: 'Performance', icon: <TimerIcon />, link:'/' },
       ],
     },
