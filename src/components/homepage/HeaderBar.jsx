@@ -12,6 +12,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions'
+import { compose } from 'redux';
 
 // import avatar from '/public/avatar.jpg'
 
@@ -67,8 +70,8 @@ function HeaderBar(props) {
             
             <Grid item xs />
             <Grid item>
-              <Link className={classes.link} href="#" variant="body2">
-                Go to docs
+              <Link className={classes.link} onClick={props.sighOut}>
+                Log Out
               </Link>
             </Grid>
             <Grid item>
@@ -96,4 +99,24 @@ HeaderBar.propTypes = {
   onDrawerToggle: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(HeaderBar);
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { 
+    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return { 
+    sighOut: () => dispatch(signOut())
+  }
+}
+
+//export default withStyles(styles)(Header);
+// export default connect(withStyles(styles))(Header);
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withStyles(styles)
+)(HeaderBar)

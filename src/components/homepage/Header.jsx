@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import HelpIcon from '@material-ui/icons/Help';
-import IconButton from '@material-ui/core/IconButton';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
-import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions'
+import { compose } from 'redux';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -37,37 +33,10 @@ const styles = theme => ({
 });
 
 function Header(props) {
-  const { classes, pageInfo } = props;
+  const { classes } = props;
 
   return (
     <React.Fragment>
-      {/* <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Toolbar>
-          <Grid container alignItems="center" spacing={1}>
-            <Grid item xs>
-              
-            </Grid>
-            <Grid item>
-              <Button className={classes.button} variant="outlined" color="inherit" size="small">
-                Web setup
-              </Button>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Help">
-                <IconButton color="inherit">
-                  <HelpIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar> */}
       <AppBar
         component="div"
         className={classes.secondaryBar}
@@ -91,4 +60,24 @@ Header.propTypes = {
   onDrawerToggle: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Header);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { 
+    
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return { 
+    sighOut: () => dispatch(signOut())
+  }
+}
+
+//export default withStyles(styles)(Header);
+// export default connect(withStyles(styles))(Header);
+
+export default compose(
+  connect(mapStateToProps),
+  connect(mapDispatchToProps),
+  withStyles(styles)
+)(Header)
