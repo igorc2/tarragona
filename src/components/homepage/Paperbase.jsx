@@ -16,6 +16,7 @@ import CreateCard from '../catalog/CreateCard'
 import Desk from '../desk/Desk';
 import Catalog from '../catalog/Catalog';
 import Dashboard from '../dashboard/Dashboard'
+import SignIn from '../auth/SignIn';
 
 //Maven+Pro|Quattrocento+Sans|Questrial|Raleway
 
@@ -241,6 +242,7 @@ function Paperbase(props) {
             <HeaderBar onDrawerToggle={handleDrawerToggle} pageInfo={page}/>
             <main className={classes.main} >
             <Switch>
+              <Route path='/signin' className='spaced' component={SignIn} />
               <Route exact path='/' className='spaced' component={() => renderComponentWithHeader(<Content/>)} />
               <Route path='/dashboard' page={page} component={() => renderSpaced(<Dashboard />)} />
               <Route path='/customers/' page={page} component={Customers} />

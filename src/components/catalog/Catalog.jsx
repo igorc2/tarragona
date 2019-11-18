@@ -28,6 +28,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <Board onCardClick={this.handleCardClick} data={data} />
+    return  ( 
+      <Board
+        onCardClick={this.handleCardClick}
+        style={{backgroundColor: '#eaeff1'}}
+        laneStyle={{backgroundColor: '#4e8094', color: '#fff', span: { fontWeight: 400}}}
+        data={data}
+      />
+    )
   }
 }
