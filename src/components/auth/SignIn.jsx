@@ -95,13 +95,42 @@ import { Redirect } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  container: {
+  loginLabel: {
+    color: 'rgba(255, 255, 255, 0.65)',
+  },
+  loginWraper: {
     display: 'flex',
     flexWrap: 'wrap',
+    height: '90vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  loginBox: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#0c1427',
+    padding: '10px 40px 20px',
+    border: '1px solid #172340',
+    borderRadius: '.25rem',
+    boxShadow: '3px 0 10px 0 #060b15',
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    fontFamily: [
+      'Questrial' ,
+      'Maven Pro',
+      'Ubuntu',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      'Segoe UI',
+      'Roboto'
+    ],
+    '& .MuiFormLabel-root, & .MuiInputBase-input': {
+      color: 'rgba(255, 255, 255, 0.65)',
+    },
+    'MuiInput-underline:before': {
+      borderBottom: '1px solid rgba(85, 163, 179, 0.42)'
+    },
     width: 300,
   },
 }));
@@ -130,32 +159,47 @@ const SignIn = props =>  {
   const {authError, auth } = props;
   if(auth.uid) return <Redirect to='/'/>
   return (
-    <div className='container'>
+    <div className={classes.loginWraper}>
       <form onSubmit={handleSubmit} noValidate autoComplete="off" className={classes.container}>
-        <h5 className="grey-text text-darken-3">Entrar</h5>
-        <TextField
-          id="email"
-          type='email'
-          label="Email"
-          value={user.email}
-          className={classes.textField}
-          onChange={handleChange}
-          margin="normal"
-        />
-        
-        <TextField
-          id="password"
-          type='password'
-          label="Password"
-          value={user.password}
-          className={classes.textField}
-          onChange={handleChange}
-          margin="normal"
-        />
-        <div className="input-field">
-          <button className="btn pink lighten-1 z-depth-0">Login</button>
-          <div className="red-text center">
-            { authError ? <p>{authError}</p> : null }
+        <div className={classes.loginBox}>
+          <h3 className={classes.loginLabel}>Entrar</h3>
+          <TextField
+            id="email"
+            name='asdfasdf'
+            type='email'
+            label="Email"
+            value={user.email}
+            className={classes.textField}
+            onChange={handleChange}
+            margin="normal"
+          />
+
+          {/* <TextField
+            id="name"
+            name='asdfasdf'
+            type='name'
+            label="Name"
+            value={user.name}
+            className={classes.textField}
+            onChange={handleChange}
+            margin="normal"
+          /> */}
+          
+          <TextField
+            id="password"
+            name='fasdffas'
+            type='password'
+            label="Password"
+            value={user.password}
+            className={classes.textField}
+            onChange={handleChange}
+            margin="normal"
+          />
+          <div className="input-field">
+            <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <div className="red-text center">
+              { authError ? <p>{authError}</p> : null }
+            </div>
           </div>
         </div>
       </form>
