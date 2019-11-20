@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -17,6 +18,9 @@ import Desk from '../desk/Desk';
 import Catalog from '../catalog/Catalog';
 import Dashboard from '../dashboard/Dashboard'
 import SignIn from '../auth/SignIn';
+import { Redirect } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import UserSignIn from '../auth/UserSignIn';
 
 //Maven+Pro|Quattrocento+Sans|Questrial|Raleway
 
@@ -150,9 +154,7 @@ theme = {
   },
 };
 
-const drawerWidth = 256;
-//2693b9
-const styles = {
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     minHeight: '100vh',
@@ -179,10 +181,11 @@ const styles = {
     padding: theme.spacing(2),
     background: '#eaeff1',
   },
-};
+}));
 
 function Paperbase(props) {
-  const { classes } = props;
+  const { auth } = props;
+  const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -216,12 +219,15 @@ function Paperbase(props) {
       </div>
     )
   }
+  if(!auth.uid) return <UserSignIn />
 
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
+
+          
           <nav className={classes.drawer}>
             {/* <Hidden smUp implementation="js"> */}
               <Navigator
@@ -266,4 +272,21 @@ Paperbase.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Paperbase);
+
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth
+  }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     signIn: (creds) => { console.log(creds); return dispatch(signIn(creds))}
+//   }
+// }
+
+export default connect(
+  mapStateToProps,
+  // mapDispatchToProps
+)(Paperbase)

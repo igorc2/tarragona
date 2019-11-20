@@ -91,7 +91,6 @@ import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions'
 import TextField from '@material-ui/core/TextField';
 import { Redirect } from 'react-router-dom';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
