@@ -60,7 +60,7 @@ class CreateCard extends Component {
       <React.Fragment>
         <Paper className={classes.paper}>
           <Toolbar>
-            <Typography variant="body1">Add customer</Typography>
+            <Typography variant="body1">Create Issue</Typography>
           </Toolbar>
           <Grid container spacing={2} alignItems="center" className={classes.content} alignContent='flex-end'>
             <Grid item xs={3}>
@@ -90,7 +90,7 @@ class CreateCard extends Component {
             
             <Grid item xs>
               <Button variant="contained" onClick={this.handleSubmit} color="primary" className={classes.addUser}>
-                Add user
+                Add Issue
               </Button>
             </Grid>
           </Grid>

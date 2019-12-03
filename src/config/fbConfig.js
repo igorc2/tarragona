@@ -1,8 +1,8 @@
- import firebase from 'firebase/app';
- import 'firebase/firestore';
- import 'firebase/auth'
- 
- var firebaseConfig = {
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth'
+
+var firebaseConfig = {
   apiKey: "AIzaSyDCXZtSc8mHUh2yoCFTRXqpVN_WqCEumJg",
   authDomain: "taragona-fb.firebaseapp.com",
   databaseURL: "https://taragona-fb.firebaseio.com",
@@ -13,6 +13,5 @@
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// firebase.firestore().settings({ timestampsInSnapshots: true});
 
 export default firebase;

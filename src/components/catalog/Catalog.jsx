@@ -1,5 +1,8 @@
 import React from 'react'
 import Board from 'react-trello'
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 const data = {
   lanes: [
@@ -21,20 +24,57 @@ const data = {
   ]
 }
 
-export default class App extends React.Component {
+const Catalog = (props) => {
 
-  handleCardClick(cardId, metadata) {
+  const { cards, auth, lanes } = props;
+
+  console.log('lanes :', lanes && lanes);
+
+  const data = {
+    lanes: lanes && lanes.map(lane => {
+      return { ...lane, cards: cards.filter(card => card.lid === lane.id) }
+    })
+  }
+  
+  console.log('data :', data);
+
+  const handleCardClick = (cardId, metadata) => {
     console.log(metadata)
   }
 
-  render() {
-    return  ( 
-      <Board
-        onCardClick={this.handleCardClick}
-        style={{backgroundColor: '#eaeff1'}}
-        laneStyle={{backgroundColor: '#4e8094', color: '#fff', span: { fontWeight: 400}}}
-        data={data}
-      />
-    )
+  return (
+    <React.Fragment>
+      { 
+        lanes && (
+          <Board
+            onCardClick={handleCardClick}
+            style={{ backgroundColor: '#eaeff1' }}
+            laneStyle={{ backgroundColor: '#4e8094', color: '#fff', span: { fontWeight: 400 } }}
+            data={data}
+          />
+        )
+      }
+  
+    </React.Fragment>
+    
+  )
+}
+
+const mapStateToProps = (state) => {
+  console.log('state :', state);
+  return {
+    // projects: state.firestore.ordered.projects,
+    cards: state.firestore.ordered.cards,
+    lanes: state.firestore.ordered.lanes,
+    auth: state.firebase.auth
   }
 }
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    // { collection: 'projects' },
+    { collection: 'cards' },
+    { collection: 'lanes' }
+  ])
+)(Catalog)
